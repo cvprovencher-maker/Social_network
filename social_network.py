@@ -87,3 +87,29 @@ if __name__ == "__main__":
 
     print("\n--- Social Network ---")
     network.print_network()
+
+
+
+"""
+Design Memo:
+
+A graph is the ideal structure for representing a social network because relationships
+between users are naturally bidirectional and non-hierarchical. In a social network,
+each person can be connected to many others, and those connections do not follow a
+strict parent-child structure. Using an adjacency list allows each Person object to
+maintain a list of friends, making it easy to add and access connections efficiently.
+
+A list would not work well because it does not inherently represent relationships
+between elements. We would need additional logic to track who is connected to whom.
+Similarly, a tree would not be appropriate because trees enforce a hierarchical
+structure with only one parent per node. Social networks are not hierarchical;
+they are many-to-many relationships, which makes graphs much more suitable.
+
+One trade-off I noticed is that adding friendships requires checking that both users
+exist and preventing duplicate connections. While adding a friend is efficient
+(approximately O(1) average time), printing the network requires iterating over all
+people and their friend lists, which takes O(V + E) time, where V is the number of
+people and E is the number of friendships. However, this is expected behavior in
+graph traversal. Overall, the adjacency list structure provides a flexible and
+scalable way to represent dynamic relationships in a social network.
+"""
